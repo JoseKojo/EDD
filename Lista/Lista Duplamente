@@ -1,0 +1,91 @@
+class Node {
+    int valor;      
+    Node proximo;    
+    Node anterior;   
+
+    public Node(int valor) {
+        this.valor = valor;
+        this.proximo = null;
+        this.anterior = null;
+    }
+}
+
+public class ListaDuplamenteEncadeada {
+    private Node inicio;  
+    private Node fim;     
+
+    public ListaDuplamenteEncadeada() {
+        this.inicio = null;
+        this.fim = null;
+    }
+
+    public boolean estaVazia() {
+        return inicio == null;
+    }
+
+    public void adicionarNoFim(int valor) {
+        Node novoNode = new Node(valor); 
+        if (estaVazia()) {
+            inicio = fim = novoNode; 
+        } else {
+            fim.proximo = novoNode;  
+            novoNode.anterior = fim;
+            fim = novoNode;         
+        }
+    }
+
+    public void adicionarNodeInicio(int valor) {
+        Node novoNode = new Node(valor);  
+        if (estaVazia()) {
+            inicio = fim = novoNode;  
+        } else {
+            novoNode.proximo = inicio;  
+            inicio.anterior = novoNode;
+            inicio = novoNode;        
+        }
+    }
+
+    public int removerDoInicio() {
+        if (estaVazia()) {
+            System.out.println("A lista está vazia. Não há elementos para remover.");
+            return -1;
+        }
+        int valorRemovido = inicio.valor; 
+        if (inicio == fim) {
+            inicio = fim = null;           
+        } else {
+            inicio = inicio.proximo;       
+            inicio.anterior = null;       
+        }
+        return valorRemovido;  
+    }
+
+    public int removerDoFim() {
+        if (estaVazia()) {
+            System.out.println("A lista está vazia. Não há elementos para remover.");
+            return -1;
+        }
+        int valorRemovido = fim.valor; 
+        if (inicio == fim) {
+            inicio = fim = null;       
+        } else {
+            fim = fim.anterior;        
+            fim.proximo = null;         
+        }
+        return valorRemovido;  
+    }
+
+    public void mostrarLista() {
+        if (estaVazia()) {
+            System.out.println("A lista está vazia.");
+            return;
+        }
+        No atual = inicio;  
+        System.out.print("Lista: ");
+        while (atual != null) {
+            System.out.print(atual.valor + " ");  
+            atual = atual.proximo;             
+        }
+        System.out.println();
+    }
+}
