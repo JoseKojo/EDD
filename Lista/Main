@@ -1,0 +1,42 @@
+public static void main(String[] args) {
+    StaticList lista = new StaticList(5);
+    ListaDuplamenteEncadeada lista = new ListaDuplamenteEncadeada();
+
+// lista estática
+    lista.add(10);
+    lista.add(20);
+    lista.add(30);
+    lista.add(40);
+    lista.add(50); 
+    lista.add(60);
+
+    lista.add(25, 2);
+    System.out.println("Elemento removido: " + lista.remove(2));
+
+    lista.setData(100, 1);
+    System.out.println("Elemento na posição 1: " + lista.getData(1));
+
+    System.out.println("Elemento 40 encontrado na posição: " + lista.find(40));
+
+    System.out.println("Tamanho atual da lista: " + lista.getSize());
+
+    lista.clear();
+
+//lista duplamente encadeada
+    lista.adicionarNoInicio(10);
+    lista.adicionarNoFim(20);
+    lista.adicionarNoFim(30);
+    lista.adicionarNoInicio(5);
+
+    lista.mostrarLista();
+
+    lista.removerDoInicio();
+    lista.mostrarLista();
+
+    lista.removerDoFim();
+    lista.mostrarLista();
+
+    lista.removerDoInicio();
+    lista.removerDoInicio();
+    lista.removerDoInicio();
+}
